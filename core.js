@@ -7,11 +7,13 @@ app.use(cors());
 app.use(express.json());
 
 // Route handler for POST requests to /welcome
-app.post('/welcome', (req, res) => {
+app.post('/api/v1/welcome', (req, res) => {
   res.status(200).send('Welcome');
 });
 
 
+
+// Route handler for POST requests to /welcome
 app.post('/api/v1/youtubedata', async (req, res) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // set the allowed origin
   res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
