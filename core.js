@@ -3,7 +3,6 @@ const app = express();
 import cors from 'cors';
 const PORT = 2023;
 import { retriveYTData } from './fx.js';
-
 app.use(cors());
 app.use(express.json());
 
@@ -34,4 +33,14 @@ app.post('/api/v1/contact', async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
+});
+
+
+
+process.on('uncaughtException', function (err) {
+  console.log(err.message);
+});
+
+process.on('TypeError', function (err) {
+  Errorlogger(err.message);
 });
