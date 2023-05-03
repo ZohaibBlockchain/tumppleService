@@ -4,19 +4,16 @@ import cors from 'cors';
 const PORT = 2023;
 import { retriveYTData } from './fx.js';
 
-app.use(cors()); // enable cors for all routes
-// Middleware to parse incoming JSON requests
+app.use(cors());
 app.use(express.json());
 
 // Route handler for POST requests to /welcome
 app.post('/welcome', (req, res) => {
-  // Send a "Welcome" string with a 200 status code
   res.status(200).send('Welcome');
 });
 
 
 app.post('/api/v1/youtubedata', async (req, res) => {
-  // console.log(req.body);
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // set the allowed origin
   res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
   res.header('Access-Control-Allow-Headers', 'Content-Type'); // set the allowed headers
@@ -33,7 +30,8 @@ app.post('/api/v1/contact', async (req, res) => {
   console.log(req.body);
   res.status(200).send('Ack');
 });
-// Start the server
+
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
