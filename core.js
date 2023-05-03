@@ -12,7 +12,6 @@ app.post('/api/v1/welcome', (req, res) => {
 });
 
 
-
 // Route handler for POST requests to /welcome
 app.post('/api/v1/youtubedata', async (req, res) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // set the allowed origin
@@ -21,7 +20,6 @@ app.post('/api/v1/youtubedata', async (req, res) => {
   let info = await retriveYTData(req.body.link);
   res.status(200).send(info);
 });
-
 
 
 app.post('/api/v1/contact', async (req, res) => {
@@ -36,7 +34,6 @@ app.post('/api/v1/contact', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
-
 
 
 process.on('uncaughtException', function (err) {
