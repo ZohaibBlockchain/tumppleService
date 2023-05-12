@@ -25,9 +25,9 @@ app.post('/api/v1/youtubedata', async (req, res) => {
 
 // Route handler for POST requests of universal
 app.post('/api/v1/uni', async (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'https://tumpple.com/'); // set the allowed origin
-  res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
-  res.header('Access-Control-Allow-Headers', 'Content-Type'); // set the allowed headers
+  // res.header('Access-Control-Allow-Origin', 'https://tumpple.com/'); // set the allowed origin
+  // res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
+  // res.header('Access-Control-Allow-Headers', 'Content-Type'); // set the allowed headers
   let service = detectService(req.body.link);
   if (service  == 'Unknown') {
     res.status(200).send({value:undefined});
