@@ -3,6 +3,8 @@ const app = express();
 import cors from 'cors';
 const PORT = 2023;
 import { retriveYTData } from './fx.js';
+import { detectService,UniversalService } from './uniFx.js';
+
 app.use(cors());
 app.use(express.json());
 
@@ -12,7 +14,6 @@ app.post('/api/v1/welcome', (req, res) => {
 });
 
 
-// Route handler for POST requests to /welcome
 app.post('/api/v1/youtubedata', async (req, res) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // set the allowed origin
   res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
@@ -20,6 +21,24 @@ app.post('/api/v1/youtubedata', async (req, res) => {
   let info = await retriveYTData(req.body.link);
   res.status(200).send(info);
 });
+
+
+// Route handler for POST requests of universal
+app.post('/api/v1/uni', async (req, res) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // set the allowed origin
+  res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
+  res.header('Access-Control-Allow-Headers', 'Content-Type'); // set the allowed headers
+  let service = detectService(req.body.link);
+  if (service  == 'Unknown') {
+    res.status(200).send({value:undefined});
+  }
+  else {
+    let _res = await UniversalService(req.body.link,service);
+    console.log(_res);
+    res.status(200).send(_res);
+  }
+});
+
 
 
 app.post('/api/v1/contact', async (req, res) => {
