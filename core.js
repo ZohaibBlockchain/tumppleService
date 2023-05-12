@@ -15,7 +15,7 @@ app.post('/api/v1/welcome', (req, res) => {
 
 
 app.post('/api/v1/youtubedata', async (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // set the allowed origin
+  res.header('Access-Control-Allow-Origin', 'https://tumpple.com/'); // set the allowed origin
   res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
   res.header('Access-Control-Allow-Headers', 'Content-Type'); // set the allowed headers
   let info = await retriveYTData(req.body.link);
@@ -25,7 +25,7 @@ app.post('/api/v1/youtubedata', async (req, res) => {
 
 // Route handler for POST requests of universal
 app.post('/api/v1/uni', async (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // set the allowed origin
+  res.header('Access-Control-Allow-Origin', 'https://tumpple.com/'); // set the allowed origin
   res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
   res.header('Access-Control-Allow-Headers', 'Content-Type'); // set the allowed headers
   let service = detectService(req.body.link);
@@ -34,7 +34,6 @@ app.post('/api/v1/uni', async (req, res) => {
   }
   else {
     let _res = await UniversalService(req.body.link,service);
-    console.log(_res);
     res.status(200).send(_res);
   }
 });
@@ -42,10 +41,9 @@ app.post('/api/v1/uni', async (req, res) => {
 
 
 app.post('/api/v1/contact', async (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // set the allowed origin
+  res.header('Access-Control-Allow-Origin', 'https://tumpple.com/'); // set the allowed origin
   res.header('Access-Control-Allow-Methods', 'POST'); // set the allowed methods
   res.header('Access-Control-Allow-Headers', 'Content-Type'); // set the allowed headers
-  console.log(req.body);
   res.status(200).send('Ack');
 });
 
