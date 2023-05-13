@@ -46,14 +46,15 @@ function pickUrl(data) {
 
 export default async function instaDownloader(url) {
     let blogData = await downloader(getId(url));
-    return convertToStandard(blogData);
+    return await convertToStandard(blogData);
 }
 
 
-function convertToStandard(data){
+async function convertToStandard(data){
 
     let finalData=[];
    console.log(data.imageUrl);
+
     data.imageUrl.forEach(img => {
         let _tmpData = {
             title: data.headline,
