@@ -38,7 +38,7 @@ function pickUrl(data) {
         imageUrls.push(img.url)
     });
     videos.forEach(vid => {
-        videoContentUrls.push({ videoUrl: vid.contentUrl,videoImg: vid.thumbnailUrl});
+        videoContentUrls.push({ videoUrl: vid.contentUrl, videoImg: vid.thumbnailUrl });
     });
     return { imageUrl: imageUrls, videoContentUrl: videoContentUrls, headline: headline.replace(/[^a-zA-Z0-9\s]+/g, '').replace(/\s+/g, ' ').trim() };
 }
@@ -50,29 +50,30 @@ export default async function instaDownloader(url) {
 }
 
 
-async function convertToStandard(data){
+async function convertToStandard(data) {
 
-    let finalData=[];
-   console.log(data.imageUrl);
-
-    data.imageUrl.forEach(img => {
-        let _tmpData = {
-            title: data.headline,
-            imageUrl: img,
-            video:false,
-            videoUrl:'None'
-          }
-         finalData.push(_tmpData);
-    });
-
-    data.videoContentUrl.forEach(vid =>{
-        let _tmpData = {
-            title: data.headline,
-            imageUrl: vid.videoImg,
-            video:true,
-            videoUrl:vid.videoUrl
-          }
-         finalData.push(_tmpData);
-    });
+    let finalData = [];
+    if (data.imageUrl != undefined) {
+        data.imageUrl.forEach(img => {
+            let _tmpData = {
+                title: data.headline,
+                imageUrl: img,
+                video: false,
+                videoUrl: 'None'
+            }
+            finalData.push(_tmpData);
+        });
+    }
+    if (data.imageUrl != undefined) {
+        data.videoContentUrl.forEach(vid => {
+            let _tmpData = {
+                title: data.headline,
+                imageUrl: vid.videoImg,
+                video: true,
+                videoUrl: vid.videoUrl
+            }
+            finalData.push(_tmpData);
+        });
+    }
     return finalData;
 }
