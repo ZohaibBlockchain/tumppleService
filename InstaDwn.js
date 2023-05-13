@@ -46,11 +46,11 @@ function pickUrl(data) {
 
 export default async function instaDownloader(url) {
     let blogData = await downloader(getId(url));
-    return await convertToStandard(blogData);
+    return convertToStandard(blogData);
 }
 
 
-async function convertToStandard(data) {
+ function convertToStandard(data) {
 
     let finalData = [];
     if (data.imageUrl != undefined) {
