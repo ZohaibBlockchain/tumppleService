@@ -53,6 +53,7 @@ export default async function instaDownloader(url) {
 function convertToStandard(data){
 
     let finalData=[];
+   console.log(data.imageUrl);
     data.imageUrl.forEach(img => {
         let _tmpData = {
             title: data.headline,
